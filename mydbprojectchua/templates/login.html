@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Create an account{% endblock title %}
+
+{% block style %}
+
+
+    html {
+    scroll-behavior: smooth;
+    }
+
+    .custom-input{
+        border-radius: 50px;
+        height: 50px;
+        padding: 0 20px;
+    }
+
+    .custom-input.form-control:focus{
+        border-color:#7057d2;
+    }
+
+    input.btn.btn-primary.hover-btn.custom-input:hover {
+          background-color:#FFF;
+          border: 2px solid #6f42c1;
+          color:black;
+    }
+
+{% endblock style %}
+
+{% block content %}
+
+
+
+ <div class="signup-section" style="padding-top:180px">
+      <div class="container">
+        <div class="row mb-3">
+          <div class="col-lg-4 text-center mx-auto">
+            <h2 class="section-heading">Login</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, voluptate!</p>
+
+             <form method="POST" action="." novalidate>
+                   {% csrf_token %}
+
+                    {% comment %} {{ form.email|as_crispy_field }}
+                    {{ form.password|as_crispy_field }}  {% endcomment %}
+
+                   <div class="form-group">
+                        <input type="text" name="username" class="custom-input form-control" placeholder="Username"  />     
+                   </div>
+
+                   <div class="form-group">
+                         <input type="password" name="password" class="custom-input form-control" placeholder="Password" />
+                   </div>
+
+                    <input class="btn btn-primary hover-btn custom-input" type="submit" style="width:100%" value="Login"/> 
+                    {% comment %} <button style="width:100%" type="submit" class="btn btn-primary">Signup</button>  {% endcomment %}
+                    {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endfor %}                   
+                    {% comment %} <input class="btn btn-primary" type="submit" value="Signup"/> {% endcomment %} 
+
+                    {% if messages %}                     
+                            {% for message in messages %}
+                            <br>
+                            <div style="margin-top:20px;" class="alert alert-primary" role="alert">
+                              {{ message }}
+                            </div>
+                            {% endfor %}                      
+                    {% endif %}
+            </form> 
+                    <br>
+                    <a class="flipbutton" id="registerButton" href="/signup">Create an account →</a>
+          </div>
+        </div>     
+    </div>
+
+{% endblock content %}
+
+

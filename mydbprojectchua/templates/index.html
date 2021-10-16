@@ -1,0 +1,614 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block  style %}
+.container .team {
+    background-color: white;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+    margin-bottom: 50px
+}
+
+.title {
+    font-size: 25px;
+    font-weight: 100
+}
+
+.icon {
+    position: relative;
+    bottom: 11px
+}
+
+.mt-100 {
+    margin-top: 100px
+}
+
+.profile img {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%
+}
+
+.card {
+    border-radius: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2)
+}
+
+.card-body {
+    position: relative;
+    bottom: 35px
+}
+
+.ft .btn {
+    margin-top: 36px;
+    margin-bottom: 45px;
+    background-color: #AB47BC;
+    border: none;
+    color: #fff
+}
+
+.ft .btn:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    color: #fff
+}
+
+.header {
+    padding-top: 40px
+}
+
+.flip-container {
+	perspective: 1000;
+}
+.flipper {
+  padding: 30px;
+  height:320px;
+  position: relative;
+   
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+	
+	transition: 0.6s;
+	transform-style: preserve-3d;
+}
+
+.front, .back {
+  /*background-color: rgba(0,0,0,.3);*/
+  position: absolute;
+    padding:10px 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+	
+	backface-visibility: hidden;
+}
+
+.front{
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+.back{
+    transform: rotateY(180deg);
+}
+.flip{
+		transform: rotateY(180deg);
+}
+input{
+    width:100%;
+    margin-bottom:15px;
+    height:40px;
+    box-sizing: border-box;
+    padding:10px;
+}
+
+.title{
+  text-align: center;
+}
+.flipbutton{
+    color:#4096ee;
+    text-decoration:none;
+    text-align:left !important;
+}
+
+
+
+
+
+{% endblock style  %}
+
+
+
+{% block content %}
+
+    <div class="hero-v1" id="home" >
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mr-auto text-center text-lg-left">
+            <span class="d-block subheading">Covid-19 Awareness</span>
+            <h1 class="heading mb-3">Stay Safe. Stay Home.</h1>
+            <p class="mb-5">At a time like his, we all need to be there for each other.</p>
+            <p class="mb-4"><a href="#" class="btn btn-primary">How to prevent</a></p>
+
+          </div>
+          <div class="col-lg-6">
+            <figure class="illustration">
+              <img src="{% static '/home/images/illustration.png' %}" alt="Image" class="img-fluid">
+            </figure>
+          </div>
+          <div class="col-lg-6"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- MAIN -->
+    
+    <div class="site-section stats" >
+      <div class="container">
+        <div class="row mb-3">
+          <div class="col-lg-7 text-center mx-auto">
+            <h2 class="section-heading">Coronavirus Statistics</h2>
+            
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="col-lg-4">
+            <div class="data">
+              <span class="icon text-primary">
+                <span class="flaticon-virus"></span>
+              </span>
+              <strong class="d-block number">14,112,077</strong>
+              <span class="label">Active Cases</span>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="data">
+              <span class="icon text-primary">
+                <span class="flaticon-virus"></span>
+              </span>
+              <strong class="d-block number">595,685</strong>
+              <span class="label">Deaths</span>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="data">
+              <span class="icon text-primary">
+                <span class="flaticon-virus"></span>
+              </span>
+              <strong class="d-block number">8,397,665</strong>
+              <span class="label">Recovered Cases</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section" id="features">
+      <div class="container">
+        <div class="row">
+        
+          <div class="col ml-auto">
+            <h2 class="mb-4 section-heading text-center">GetVaxxed</h2>
+            <p>COVID-19 is such a burden to our life many people died from this virus because of COVID-19 many businesses, lose their job and other grinds are affected.</p>
+            <p>A year later vaccines are now available in any country and kudos to all frontliners fighting for the lives to stop this virus. but many people still don't want to be vaccinated because of it's side effects, they are scared that if they will get vaccinated their life will be endanger.</p>
+            <p>So our proposed project GetVaxxed is a website that encourage people to get vaccinated in order to protect family and to aware people that COVID-19 Vaccines are effective.</p>
+            <p>We want our website to help people to be aware that getting vaccinated is the first step to stop this COVID-19 virus.</p>
+
+            <h2 class="mb-4 section-heading">Features</h2>
+            <ul class="list-check list-unstyled mb-5">
+              <li>Informative</li>
+              <li>Interactive</li>
+              <li>User-Friendly</li>
+            </ul>
+            <p><a href="#" class="btn btn-primary">Learn more</a></p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="container pb-5">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="feature-v1 d-flex align-items-center">
+            <div class="icon-wrap mr-3">
+              <span class="flaticon-protection"></span>
+            </div>
+            <div>
+              <h3>Protection</h3>
+              <span class="d-block">Do Daily Exercise</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="feature-v1 d-flex align-items-center">
+            <div class="icon-wrap mr-3">
+              <span class="flaticon-patient"></span>
+            </div>
+            <div>
+              <h3>Prevention</h3>
+              <span class="d-block">Always Wear Face Mask</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="feature-v1 d-flex align-items-center">
+            <div class="icon-wrap mr-3">
+              <span class="flaticon-hand-sanitizer"></span>
+            </div>
+            <div>
+              <h3>Treatments</h3>
+              <span class="d-block">Always wash your hands</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="feature-v1 d-flex align-items-center">
+            <div class="icon-wrap mr-3">
+              <span class="flaticon-virus"></span>
+            </div>
+            <div>
+              <h3>Symptoms</h3>
+              <span class="d-block">Be aware to your surroundings</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section bg-primary-light">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+
+            <div class="row">
+              <div class="col-6 col-lg-6 mt-lg-5">
+                <div class="media-v1 bg-1">
+                  <div class="icon-wrap">
+                    <span class="flaticon-stay-at-home"></span>
+                  </div>
+                  <div class="body">
+                    <h3>Stay at home</h3>
+                    <p>Follow your community guidelines for staying home.</p>
+                  </div>
+                </div>
+
+                <div class="media-v1 bg-1">
+                  <div class="icon-wrap">
+                    <span class="flaticon-patient"></span>
+                  </div>
+                  <div class="body">
+                    <h3>Wear facemask</h3>
+                    <p>Wear a face mask when you go out.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-6">
+                <div class="media-v1 bg-1">
+                  <div class="icon-wrap">
+                    <span class="flaticon-social-distancing"></span>
+                  </div>
+                  <div class="body">
+                    <h3>Keep social distancing</h3>
+                    <p>When you do go out in public, leave at least 6 feet of space between you and others.</p>
+                  </div>
+                </div>
+
+                <div class="media-v1 bg-1">
+                  <div class="icon-wrap">
+                    <span class="flaticon-hand-washing"></span>
+                  </div>
+                  <div class="body">
+                    <h3>Wash your hands</h3>
+                    <p>Use hand sanitizer when you’re not near soap and water.</p>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-lg-5 ml-auto">
+            <h2 class="section-heading mb-4">How to Prevent Coronavirus?</h2>
+            <p>The virus spreads mostly through droplets that people send out when they talk, sneeze, or cough. These usually don’t stay in the air for long or go farther than 6 feet. But the coronavirus might also travel through tiny aerosol particles that can linger for up to 3 hours and travel farther away. </p>
+            <p class="mb-4">This is why wearing a facial covering can be important. It can keep you from giving it to others as well as helping you avoid breathing it in.</p>
+
+            {% comment %} <ul class="list-check list-unstyled mb-5">
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Consectetur adipisicing elit</li>
+              <li>Unde doloremque</li>
+            </ul> {% endcomment %}
+
+            <p><a href="#" class="btn btn-primary">Read more about prevention</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-7 mx-auto text-center">
+            <span class="subheading">What you need to do</span>
+            <h2 class="mb-4 section-heading">How To Protect Yourself</h2>
+            <p>Even if you don't show symptoms, you could carry the COVID-19 virus. People more than 2 years old should wear a cloth face mask in public.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 ">
+            <div class="row mt-5 pt-5">
+              <div class="col-lg-6 do ">
+                <h3>You should do</h3>
+                <ul class="list-unstyled check">
+                  <li>Stay at home</li>
+                  <li>Wear mask</li>
+                  <li>Use Sanitizer</li>
+                  <li>Disinfect your home</li>
+                  <li>Wash your hands</li>
+                  <li>Frequent self-isolation</li>
+                </ul>
+              </div>
+              <div class="col-lg-6 dont ">
+                <h3>You should avoid</h3>
+                <ul class="list-unstyled cross">
+                  <li>Avoid infected people</li>
+                  <li>Avoid animals</li>
+                  <li>Avoid handshaking</li>
+                  <li>Aviod infected surfaces</li>
+                  <li>Don't touch your face</li>
+                  <li>Avoid droplets</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <img src="{% static '/home/images/protect.png' %}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section bg-primary-light">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-7 mx-auto text-center">
+            <h2 class="mb-4 section-heading">Symptoms of Coronavirus</h2>
+            <p>COVID-19 affects different people in different ways. Most infected people will develop mild to moderate illness and recover without hospitalization.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="symptom d-flex">
+              <div class="img">
+                <img src="{% static '/home/images/symptom_high-fever.png' %}" alt="Image" class="img-fluid">
+              </div>
+              <div class="text">
+                <h3>High Fever</h3>
+                <p> Fever is one of the main symptoms of sickness from coronavirus infection, along with cough and shortness of breath. These symptoms can appear two to 14 days after exposure to coronavirus</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="symptom d-flex">
+              <div class="img">
+                <img src="{% static '/home/images/symptom_cough.png' %}" alt="Image" class="img-fluid">
+              </div>
+              <div class="text">
+                <h3>Cough</h3>
+                <p> If you develop a dry cough, it’s very possible that you could simply be dealing with allergies, being inside all day (ahem, working from home), or other environmental factors.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="symptom d-flex">
+              <div class="img">
+                <img src="{% static '/home/images/symptom_sore-troath.png' %}" alt="Image" class="img-fluid">
+              </div>
+              <div class="text">
+                <h3>Sore Troath</h3>
+                <p> A sore throat is pain, scratchiness or irritation of the throat that often worsens when you swallow. The most common cause of a sore throat (pharyngitis) is a viral infection, such as a cold or the flu.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4">
+            <div class="symptom d-flex">
+              <div class="img">
+                <img src="{% static '/home/images/symptom_headache.png' %}" alt="Image" class="img-fluid">
+              </div>
+              <div class="text">
+                <h3>Headache</h3>
+                <p> Headaches are a very common condition that most people will experience many times during their lives. The main symptom of a headache is a pain in your head or face.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center">
+          <div class="col-lg-10">
+            <div class="note row">
+
+              <div class="col-lg-8 mb-4 mb-lg-0"><strong>Stay at home and call your doctor</strong></div>
+              <div class="col-lg-4 text-lg-right">
+                <a href="#" class="btn btn-primary"><span class="icon-phone mr-2 mt-3"></span>Help line</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section" id="about">
+          <div class='container team mx-auto mt-5 col-md-10 mt-100'>
+          <div class="header">
+              <h2 class="mb-4 section-heading">MEET OUR TEAM</h2>
+              <p>“Coming together is a beginning, staying together is progress, and working together is a success.”</p>
+          </div>
+          <div class="row" style="justify-content: center">
+              <div class="card col-md-3 mt-100">
+                  <div class="card-content">
+                      <div class="card-body p-0">
+                          <div class="profile"> <img src="{% static '/home/images/noy-profile.jpg' %}"> </div>
+                          <div class="card-title"> John Francis Chua<br /> <small>Freelancer</small> </div>
+                          <div class="card-subtitle">
+                              <p> <small class="text-muted"> I expected anything less than perfect for the team of experts. They are the best team ever! </small> </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            
+              <div class="card col-md-3 mt-100">
+                  <div class="card-content">
+                      <div class="card-body p-0">
+                          <div class="profile"> <img src="{% static '/home/images/aljon-profile.jpg' %}"> </div>
+                          <div class="card-title"> Aljon Rey Alipin<br /> <small>Fun Guy</small> </div>
+                          <div class="card-subtitle">
+                              <p> <small class="text-muted"> I always wanted cool videos of my concerts never knew whom to talk to but they are amazing! </small> </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="ft">
+              <div class="btn btn-outline">Tell a nice word</div>
+          </div>
+      </div>
+    </div>
+
+    <div class="hero-v1" id="contact-us">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-lg-6 text-center mx-auto">
+            <span class="d-block subheading">Contact</span>
+            <h1 class="heading mb-3">Get In Touch</h1>
+            <p class="mb-5">Our team is happy to answer your questions. Fill out the form and we'll be in touch as soon as possible.</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+  <div class="site-section" >
+          
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <form action="#">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="fname">First name</label>
+                    <input type="text" id="fname" class="form-control">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="lname">Last name</label>
+                    <input type="text" id="lname" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" class="form-control" cols="30" rows="10"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <input type="submit" class="btn btn-primary" value="Send Message">
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="col-lg-5 ml-auto">
+            <h3 class="mb-3 side-title">Quick info</h3>
+            <div class="quick-contact">
+
+              <div class="d-flex">
+                <span class="icon-room"></span>
+                <address>
+                  Cebu City, Philippines
+                </address>
+              </div>
+              <div class="d-flex">
+                <span class="icon-phone"></span>
+                <a href="#">+1 291 2902 392</a>
+              </div>
+              <div class="d-flex">
+                <span class="icon-envelope"></span>
+                <a href="#">info@mydomain.com</a>
+              </div>
+              <div class="d-flex">
+                <span class="icon-globe"></span>
+                <a href="#">https://mywebsite.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  
+{% endblock content %}
+
+{% block script %}
+
+var loginButton = document.getElementById("loginButton");
+var registerButton = document.getElementById("registerButton");
+
+loginButton.onclick = function(){
+	document.querySelector("#flipper").classList.toggle("flip");
+}
+
+registerButton.onclick = function(){
+	document.querySelector("#flipper").classList.toggle("flip");
+}
+
+{% endblock script %}
+
+
+
+
+
+    
+
+
+

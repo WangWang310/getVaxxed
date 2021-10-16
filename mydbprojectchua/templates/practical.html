@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Practical {% endblock title %}
+
+{% block content %}
+<div class="container" style="padding-top:180px">
+    <div class="row justify-content-md-center">
+        <div class="col-6">
+        <h2 class="section-heading text-center" style="padding-bottom:20px;"><span class="mdi mdi-account-plus"></span> Add DVD</h2>
+            <form method="POST" action="." novalidate>
+                            {% csrf_token %}
+            
+                                {{ form.genre|as_crispy_field }}
+                                {{ form.title|as_crispy_field }}
+                                {{ form.release_year|as_crispy_field }} 
+
+                                
+                                {% for error in field.errors %}
+                                    <p style="color: red">{{ error }}</p>
+                                {% endfor %}  
+
+                
+                    <button type="submit" class="btn btn-primary">Add DVD</button>
+            
+                </form> 
+        </div>
+
+    </div>
+
+    <div class="row" style="padding-top:100px">
+        <div class="col">
+         
+             <table  id="dvdTable" class="table table-hover table-bordered text-center">
+                                        <thead>
+                                            <tr>
+                                                <th>Genre</th>
+                                                <th>Title</th>
+                                                <th>Release Year</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for dvd in list_dvd  %}
+                                            <tr>
+                                                
+                                                <td class="align-middle">{{ dvd.genre }}</td>
+                                                <td class="align-middle">{{ dvd.title}}</td> 
+                                                <td class="align-middle"> {{ dvd.release_year}} </td>
+                                                
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+{% block script %}
+  $(document).ready(function (){
+
+
+    $('#dvdTable').DataTable({
+      'pageLength' : 5,
+      "lengthMenu": [ 1, 2, 3, 4, 5, 10]
+    });
+
+  });
+{% endblock script %}

@@ -1,0 +1,191 @@
+{% extends 'admin-base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+ <!-- ======= Mobile nav toggle button ======= -->
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+       
+        <img src="https://loremflickr.com/320/240?random=1" alt="" class="img-fluid rounded-circle"> 
+        
+        <h1 class="text-light"><a href="index.html">ADMIN</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>User</span></a></li>
+          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Post</span></a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>Hello, ADMIN</h1>
+      <p>Be <span class="typed" data-typed-items="Handsome, Grateful, Happy, Teknoy"></span></p>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Users</h2>
+          <p>We're living in an exhilarating time where you can reach millions of people through so many different channels. That being said, to build a brand, you need to identify the right audience and craft the right story.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-right">
+            
+         
+          </div>
+          <div class="col-lg-12 pt-4 pt-lg-0 content" data-aos="fade-left">
+              <div class="col-lg">
+                    <table id="userTable" class="table table-hover table-bordered text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for user in users  %}
+                                        <tr>
+                                            
+                                            <td class="align-middle">{{ user.username }}</td>
+                                            <td class="align-middle">{{ user.email}}</td> 
+                                            <td class="align-middle"> 
+                                            <button class="btn btn-success">Update</button> 
+                                            <p></p>
+                                            <button class="btn btn-danger">Delete</button>
+                                            </td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+              </div>
+        
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+    <!-- ======= Proposed Project Section ======= -->
+    <section id="resume" class="resume">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Proposed Project</h2>
+          <h3 style="font-weight:bold;">GetVaxxed</h3>
+          <p>COVID-19 is such a burden to our life many people died from this virus because of COVID-19 many businesses, lose their job and other grinds are affected.
+          <br>
+          <br>
+          A year later vaccines are now available in any country and kudos to all frontliners fighting for the lives to stop this virus. but many people still don't want to be 
+          vaccinated because of it's side effects, they are scared that if they will get vaccinated their life will be endanger.
+          </p>
+          <br>
+          <p>So our proposed project <b>GetVaxxed</b> is a website that encourage people to get vaccinated in order to protect family and to aware people that COVID-19 Vaccines are effective.
+          <br>
+          <br>
+          We want our website to help people to be aware that getting vaccinated is the first step to stop this COVID-19 virus.
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-up">
+            <h3 class="resume-title">Sumary</h3>
+            <div class="resume-item pb-0">
+              <h4>Alex Smith</h4>
+              <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
+              <ul>
+                <li>Portland par 127,Orlando, FL</li>
+                <li>(123) 456-7891</li>
+                <li>alice.barkley@example.com</li>
+              </ul>
+            </div>
+
+            <h3 class="resume-title">Education</h3>
+            <div class="resume-item">
+              <h4>Master of Fine Arts &amp; Graphic Design</h4>
+              <h5>2015 - 2016</h5>
+              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
+            </div>
+            <div class="resume-item">
+              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
+              <h5>2010 - 2014</h5>
+              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">Professional Experience</h3>
+            <div class="resume-item">
+              <h4>Senior graphic design specialist</h4>
+              <h5>2019 - Present</h5>
+              <p><em>Experion, New York, NY </em></p>
+              <ul>
+                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
+                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
+                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
+                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <h4>Graphic design specialist</h4>
+              <h5>2017 - 2018</h5>
+              <p><em>Stepping Stone Advertising, New York, NY</em></p>
+              <ul>
+                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
+                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
+                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
+                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Proposed Project Section -->
+
+  </main><!-- End #main -->
+
+{% endblock content %}
+
+{% block script %}
+  $(document).ready(function (){
+
+
+    $('#userTable').DataTable({
+      'pageLength' : 5,
+      "lengthMenu": [ 1, 2, 3, 4, 5, 10]
+    });
+
+    $('#postTable').DataTable({
+      'pageLength' : 5,
+      "lengthMenu": [ 1, 2, 3, 4, 5, 10]
+    });
+
+  });
+{% endblock script %}
