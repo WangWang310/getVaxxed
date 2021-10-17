@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Create an account{% endblock title %}
+
+{% block style %}
+
+
+html {
+scroll-behavior: smooth;
+}
+
+div.post-wrapper {
+    padding: 50px;
+    margin-top: 20px;
+    border: 1px solid #6c757d6e;
+    border-radius: 10px;
+}
+
+.post-author{
+    color: #000;
+}
+
+.post-content{
+    color: #000;
+}
+
+.post-title{
+    color: #000;
+}
+
+
+{% endblock style %}
+
+{% block content %}
+
+<div class="signup-section" style="padding-top:180px">
+    <div class="container">
+    
+
+        <div class="row mb-3">
+            <div class="col-lg-4 text-center mx-auto">
+
+               
+
+
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+
+                      {% for user in users %}
+                        {% for post in posts  %}
+                        
+                                {% if post.id_id == user.id %}
+                                    {% if post.post_status == 'APPROVED' %}
+                                        <div class="post-wrapper">
+                                            <span class="post-author"> <b>{{ user.first_name }} {{ user.last_name }}</b> @{{ user.username }}</span>
+                                            <p class="post-title"> {{ post.post_title }} </p>
+                                            <p class="post-content"> {{ post.post_content }} </p>
+                                        </div>                                 
+                                    {% endif %}                                  
+                               {% endif %}
+                        {% endfor %}
+                      {% endfor %}  
+                        
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}
+
+    {% block script %}
+    
+        $(document).ready(function () {
+
+
+            $('#postTable').DataTable({
+                'pageLength': 5,
+                "lengthMenu": [1, 2, 3, 4, 5, 10]
+            });
+        });
+ 
+    
+    
+    {% endblock script %}

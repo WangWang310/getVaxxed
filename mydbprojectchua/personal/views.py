@@ -291,6 +291,18 @@ class dashboardv3_screen_view(View):
         return redirect('/dashboardv3')
 
 
+class post_screen_view(View):
+    def get(self, request):
+        post = Post.objects.all()
+        user = User.objects.all()
+        context = {
+            'posts': post,
+            'users': user,
+        }
+
+        return render(request, "post.html", context)
+
+
 class user_screen_view(View):
 
     def get(self, request):
@@ -324,3 +336,21 @@ class user_screen_view(View):
                 form.save()
                 messages.success(request, 'Post submission successful')
                 return redirect('user')
+
+            if 'btnUpdatePost' in request.POST:
+                postid = request.POST.get("postID")
+                postTitle = request.POST.get("updatePostTitle")
+                postContent = request.POST.get("updatePostContent")
+
+                update_post = Post.objects.filter(postPK=postid).update(
+                    post_title=postTitle, post_content=postContent)
+                print('Post Updated')
+                messages.success(request, 'Post updated successful')
+                return redirect('user')
+
+    @staticmethod
+    def deletePost(request, id):
+        post = Post.objects.get(postPK=id)
+        post.delete()
+        messages.success(request, 'Post has been deleted successfully.')
+        return redirect('user')

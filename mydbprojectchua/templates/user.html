@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block title %} Create an account{% endblock title %}
+{% block title %} User {% endblock title %}
 
 {% block style %}
 
@@ -116,46 +116,125 @@ color:black;
                                     <th>Post Title</th>
                                     <th>Post Content</th>
                                     <th>Post Status</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
-                                 {% for post in posts  %}
-                                 {% if user_id == post.id_id %}
+
+                                {% for post in posts  %}
+                                {% if user_id == post.id_id %}
                                 <tr>
 
                                     <td class="align-middle">{{ post.post_title }}</td>
                                     <td class="align-middle">{{ post.post_content }}</td>
                                     <td class="align-middle">{{ post.post_status}}</td>
-
+                                    <td class="align-middle">
+                                        <!-- Button Trigger modal -->
+                                        <button style="background:none; border:none; color:#59c509;" type="button"
+                                            data-toggle="modal" data-target="#approve{{ post.postPK }}">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button style="background:none; border:none; color:#ff5858" type="button"
+                                            data-toggle="modal" data-target="#delete{{ post.postPK }}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
 
                                 </tr>
-                                <!-- Approve Post Modal -->
+                                <!-- Update Post Modal -->
+                                <div class="modal fade" id="approve{{ post.postPK }}" tabindex="-1" role="dialog"
+                                    aria-labelledby="{{ post.post_title }}CenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="updateModalLongTitle">Update
+                                                    Post: {{ post.post_title }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
 
-                                {% endif %}
-                                {% endfor %}                                                       
-    
-                            </tbody>
-                        </table>
+
+                                            <div class="modal-body">
+
+                                                <form method="POST" action="." novalidate>
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="postID" value="{{post.postPK}}">
+                                                    <div class="form-group">
+                                                        <input value="{{post.post_title}}" type="text" name="updatePostTitle"
+                                                            class="custom-input form-control" placeholder="Title" />
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <textarea style="border-radius: 10px; padding-top:20px;"
+                                                            class="custom-input form-control" placeholder="Content"
+                                                            name="updatePostContent" id="" cols="30"
+                                                            rows="10"> {{post.post_content}} </textarea>
+                                                    </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <input name="btnUpdatePost" type="submit" value="Update"
+                                                    class="btn btn-primary">
+
+                                            </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
                     </div>
+                               <!-- Delete  Modal -->
+                                <div class="modal fade" id="delete{{ post.postPK }}" tabindex="-1" role="dialog"
+                                    aria-labelledby="{{ post.post_title }}CenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLongTitle">Delete Post:
+                                                    {{ post.post_title}}</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are your sure you want to delete post : <b>{{ post.post_title }}</b>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a style="color:#ff0000"
+                                                    href="{% url 'delete-user-post' post.postPK %}">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                    {% endif %}
+                    {% endfor %}
+
+                    </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    {% endblock content %}
+{% endblock content %}
 
-    {% block script %}
-    
-        $(document).ready(function () {
+{% block script %}
+
+$(document).ready(function () {
 
 
-            $('#postTable').DataTable({
-                'pageLength': 5,
-                "lengthMenu": [1, 2, 3, 4, 5, 10]
-            });
-        });
- 
-    
-    
-    {% endblock script %}
+$('#postTable').DataTable({
+'pageLength': 5,
+"lengthMenu": [1, 2, 3, 4, 5, 10]
+});
+});
+
+
+
+{% endblock script %}

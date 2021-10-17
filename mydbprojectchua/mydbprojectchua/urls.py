@@ -34,13 +34,14 @@ from personal.views import(
     logout,
     dashboardv3_screen_view,
     user_screen_view,
-    
+    post_screen_view,
+
 
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('admin-dashboard/',admin_screen_view, name="admin-dashboard"),
+    path('admin-dashboard/', admin_screen_view, name="admin-dashboard"),
     path('', home_screen_view_v2, name="home"),
     path('signup/', signup_screen_view, name="signup"),
     path('login/', login_screen_view, name="login"),
@@ -54,9 +55,14 @@ urlpatterns = [
     path('update/<int:id>', updateUser, name="updateUser"),
     path('dashboardv3/', dashboardv3_screen_view.as_view(), name="dashboardv3"),
     path('delete2/<int:id>', dashboardv3_screen_view.deleteUserV2, name='deleteUserv2'),
-    path('delete-post/<int:id>', dashboardv3_screen_view.deletePost, name='delete-post'),
+    path('delete-post/<int:id>',
+         dashboardv3_screen_view.deletePost, name='delete-post'),
     path('logout/', logout, name='logout'),
     path('user/', user_screen_view.as_view(), name='user'),
-    
-    
+    path('post/', post_screen_view.as_view(), name='post'),
+    path('delete-user-post/<int:id>',
+         user_screen_view.deletePost, name='delete-user-post'),
+
+
+
 ]
